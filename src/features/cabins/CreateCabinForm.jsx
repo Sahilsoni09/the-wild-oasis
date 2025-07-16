@@ -26,7 +26,7 @@ function CreateCabinForm() {
     },
   });
   function onSubmit(data) {
-    mutate(data);
+    mutate({ ...data, image: data.image[0] });
   }
   function onError(errors) {
     // console.log(errors);
@@ -83,7 +83,7 @@ function CreateCabinForm() {
           {...register("discount", {
             required: "This field is required",
             validate: (value) =>
-              getValues().regularPrice > value ||
+              Number(getValues().regularPrice) > Number(value) ||
               "Discount must be less than regular price",
           })}
         />
@@ -100,7 +100,7 @@ function CreateCabinForm() {
       </FormRow>
 
       <FormRow label="Cabin photo">
-        <FileInput id="image" accept="image/*" />
+        <FileInput id="image" accept="image/*" {...register("image")} />
       </FormRow>
 
       <FormRow>
