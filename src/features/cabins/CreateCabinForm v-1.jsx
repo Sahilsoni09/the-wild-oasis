@@ -12,10 +12,10 @@ import { useForm } from "react-hook-form";
 import { createEditCabin } from "../../services/apiCabins";
 
 function CreateCabinForm() {
-  const queryClient = useQueryClient();
   const { register, handleSubmit, reset, getValues, formState } = useForm();
   const { errors } = formState;
 
+  const queryClient = useQueryClient();
   const { mutate, isPending: isCreating } = useMutation({
     mutationFn: createEditCabin,
     onSuccess: () => {
@@ -31,9 +31,9 @@ function CreateCabinForm() {
   function onSubmit(data) {
     mutate({ ...data, image: data.image[0] });
   }
-  function onError(errors) {
-    // console.log(errors);
-  }
+  // function onError(errors) {
+  //   // console.log(errors);
+  // }
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow label="Cabin name" error={errors?.name?.message}>
