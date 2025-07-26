@@ -9,7 +9,7 @@ import Empty from "../../ui/Empty";
 function CabinTable() {
   const { isPending, cabins } = useCabins();
   const [searchParams] = useSearchParams();
-  if (!cabins.length) return <Empty resourceName="cabins" />;
+  if (!cabins?.length) return <Empty resourceName="cabins" />;
   // 1) FILTER
   const filtervalue = searchParams.get("discount") || "all";
 
