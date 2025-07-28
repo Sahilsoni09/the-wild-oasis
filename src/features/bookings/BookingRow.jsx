@@ -10,7 +10,7 @@ import Menus from "../../ui/Menus";
 import { HiEye } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { HiArrowUpOnSquare, HiMiniArrowDownOnSquare } from "react-icons/hi2";
-import { useCheckout } from "../check-in-out/useCheckOut";
+import { useCheckOut } from "../check-in-out/useCheckOut";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -54,7 +54,7 @@ function BookingRow({
   },
 }) {
   const navigate = useNavigate();
-  const { checkout, isCheckingOut } = useCheckout();
+  const { checkout, isCheckingOut } = useCheckOut();
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
